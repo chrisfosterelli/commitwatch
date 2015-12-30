@@ -1,9 +1,8 @@
 
 # Github Tray App
 
-import urllib
 import rumps
-import contribparser
+import contribs
 
 class GithubTrayApp(rumps.App):
 
@@ -20,9 +19,5 @@ class GithubTrayApp(rumps.App):
         rumps.alert('jk! not ready yet!')
 
 if __name__ == "__main__":
-    parser = contribparser.ContribParser()
-    u = urllib.urlopen('https://github.com/users/chrisfosterelli/contributions')
-    parser.feed(u.read())
-    print("Count")
-    print(parser.count)
+    print(contribs.getContribs('chrisfosterelli'))
     GithubTrayApp('Github', icon='github.png').run()

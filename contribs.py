@@ -1,6 +1,7 @@
 
-# Parse contributions from Github
+# Get Contribution Count
 
+import urllib
 import datetime
 import HTMLParser
 
@@ -24,4 +25,9 @@ class ContribParser(HTMLParser.HTMLParser):
                 return value
         return None
 
-def getContribs(
+def getContribs(username):
+    url = 'https://github.com/users/:user/contributions'
+    req = urllib.urlopen(url.replace(':user', username))
+    parser = ContribParser()
+    parser.feed(req.read())
+    return parser.count
