@@ -2,6 +2,7 @@
 # Github Tray App
 
 import rumps
+import contribs
 
 class GithubTrayApp(rumps.App):
 
@@ -18,4 +19,5 @@ class GithubTrayApp(rumps.App):
         rumps.alert('jk! not ready yet!')
 
 if __name__ == "__main__":
-     GithubTrayApp('Github', icon='github.png').run()
+    print(contribs.getContribs('chrisfosterelli'))
+    GithubTrayApp('Github', icon='github.png').run()
