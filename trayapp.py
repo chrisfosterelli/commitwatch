@@ -4,11 +4,14 @@
 import rumps
 import contribs
 
+username = 'chrisfosterelli'
+
 class GithubTrayApp(rumps.App):
 
     @rumps.clicked('Update')
     def onoff(self, sender):
-        rumps.alert('jk! not ready yet!')
+        count = contribs.getContribs(username)
+        self.title = str(count)
 
     @rumps.clicked('Change Frequency')
     def onoff(self, sender):
@@ -19,5 +22,5 @@ class GithubTrayApp(rumps.App):
         rumps.alert('jk! not ready yet!')
 
 if __name__ == "__main__":
-    print(contribs.getContribs('chrisfosterelli'))
-    GithubTrayApp('Github', icon='github.png').run()
+    count = contribs.getContribs(username)
+    GithubTrayApp('Github', icon='github.png', title=str(count)).run()
