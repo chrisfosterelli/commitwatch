@@ -8,6 +8,12 @@ username = 'chrisfosterelli'
 
 class GithubTrayApp(rumps.App):
 
+    @rumps.timer(60*5)
+    def timer(self, sender):
+        print('Timer running!')
+        count = contribs.getContribs(username)
+        self.title = str(count)
+
     @rumps.clicked('Update')
     def onoff(self, sender):
         count = contribs.getContribs(username)

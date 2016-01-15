@@ -10,7 +10,7 @@ class ContribParser(HTMLParser.HTMLParser):
     def __init__(self):
         self.today = datetime.date.today().isoformat()
         HTMLParser.HTMLParser.__init__(self)
-    
+
     def handle_starttag(self, tag, attrs):
         if tag == 'rect' and self.is_today(attrs):
             self.count = self.get_count(attrs)
