@@ -2,9 +2,10 @@
 # Github Tray App
 
 import rumps
+import config
 import contribs
 
-username = 'chrisfosterelli'
+username = config.get_username()
 
 class GithubTrayApp(rumps.App):
 
