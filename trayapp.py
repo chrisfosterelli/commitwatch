@@ -10,13 +10,12 @@ class GithubTrayApp(rumps.App):
 
     @rumps.timer(60*5)
     def timer(self, sender):
-        print('Timer running!')
-        count = contribs.getContribs(username)
+        count = contribs.get_contribs(username)
         self.title = str(count)
 
     @rumps.clicked('Update')
     def onoff(self, sender):
-        count = contribs.getContribs(username)
+        count = contribs.get_contribs(username)
         self.title = str(count)
 
     @rumps.clicked('Change Frequency')
@@ -28,5 +27,5 @@ class GithubTrayApp(rumps.App):
         rumps.alert('jk! not ready yet!')
 
 if __name__ == "__main__":
-    count = contribs.getContribs(username)
+    count = contribs.get_contribs(username)
     GithubTrayApp('Github', icon='github.png', title=str(count)).run()
