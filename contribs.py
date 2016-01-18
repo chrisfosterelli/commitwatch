@@ -27,7 +27,7 @@ class ContribParser(HTMLParser.HTMLParser):
                 return value
         return None
 
-def getContribs(username):
+def get_contribs(username):
     url = 'https://github.com/users/:user/contributions'
     req = urllib.urlopen(url.replace(':user', username))
     parser = ContribParser()
