@@ -5,28 +5,42 @@ import rumps
 import config
 import contribs
 
-username = config.get_username()
-
 class GithubTrayApp(rumps.App):
 
-    @rumps.timer(60*5)
-    def timer(self, sender):
-        count = contribs.get_contribs(username)
-        self.title = str(count)
+    def __init__(self):
+        super(GithubTrayApp, self).__init__('Github')
+        self.count = rumps.MenuItem('commits')
+        self.username = config.get_username()
+        self.icon = 'github.png'
+        self.menu = [ 
+            self.count, 
+            'Update Now', 
+            'Change Frequency', 
+            'Change Username' 
+        ]
+        self.update()
 
-    @rumps.clicked('Update')
-    def onoff(self, sender):
-        count = contribs.get_contribs(username)
-        self.title = str(count)
+    def update(self):
+        num = contribs.get_contribs(self.username)
+        self.count.title = str(num) + ' commits'
+        self.title = str(num)
+
+    @rumps.timer(60*5)
+    def timer(self, _):
+        print('Running timer')
+        self.update()
+
+    @rumps.clicked('Update Now')
+    def update_now(self, _):
+        self.update()
 
     @rumps.clicked('Change Frequency')
-    def onoff(self, sender):
+    def change_frequency(_):
         rumps.alert('jk! not ready yet!')
 
     @rumps.clicked('Change Username')    
-    def prefs(self, _):
+    def change_username(_):
         rumps.alert('jk! not ready yet!')
 
-if __name__ == "__main__":
-    count = contribs.get_contribs(username)
-    GithubTrayApp('Github', icon='github.png', title=str(count)).run()
+if __name__ == '__main__':
+    GithubTrayApp().run()
