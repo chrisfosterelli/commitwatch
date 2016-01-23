@@ -21,9 +21,11 @@ class GithubTrayApp(rumps.App):
         self.update()
 
     def update(self):
-        num = contribs.get_contribs(self.username)
-        self.count.title = str(num) + ' commits'
-        self.title = str(num)
+        try: 
+            num = str(contribs.get_contribs(self.username))
+            self.count.title = num + ' commits'
+            self.title = num
+        except Exception as e: print(e)
 
     @rumps.timer(60*5)
     def timer(self, _):
