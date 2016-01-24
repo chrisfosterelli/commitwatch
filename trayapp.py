@@ -11,7 +11,6 @@ class GithubTrayApp(rumps.App):
         super(GithubTrayApp, self).__init__('Github')
         self.count = rumps.MenuItem('commits')
         self.username = config.get_username()
-        self.icon = 'github.png'
         self.menu = [ 
             self.count, 
             'Update Now', 
@@ -23,8 +22,8 @@ class GithubTrayApp(rumps.App):
     def update(self):
         try: 
             num = str(contribs.get_contribs(self.username))
+            self.icon = "github0.png" if num == "0" else "github.png"
             self.count.title = num + ' commits'
-            self.title = num
         except Exception as e: print(e)
 
     @rumps.timer(60*5)
