@@ -21,6 +21,7 @@ class GithubTrayApp(rumps.App):
 
     def update(self):
         try: 
+            print('Updating user')
             num = str(contribs.get_contribs(self.username))
             self.icon = 'github0.png' if num == '0' else 'github.png'
             self.count.title = num + ' commits'
@@ -28,7 +29,6 @@ class GithubTrayApp(rumps.App):
 
     @rumps.timer(60*5)
     def timer(self, _):
-        print('Running timer')
         self.update()
 
     @rumps.clicked('Update Now')
