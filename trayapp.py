@@ -17,7 +17,6 @@ class GithubTrayApp(rumps.App):
             'Change Frequency', 
             'Change Username' 
         ]
-        self.update()
 
     def update(self):
         try: 
