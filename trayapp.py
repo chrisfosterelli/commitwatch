@@ -22,7 +22,7 @@ class GithubTrayApp(rumps.App):
     def update(self):
         try: 
             num = str(contribs.get_contribs(self.username))
-            self.icon = "github0.png" if num == "0" else "github.png"
+            self.icon = 'github0.png' if num == '0' else 'github.png'
             self.count.title = num + ' commits'
         except Exception as e: print(e)
 
