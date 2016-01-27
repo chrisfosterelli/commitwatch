@@ -17,10 +17,11 @@ class GithubTrayApp(rumps.App):
             'Change Frequency', 
             'Change Username' 
         ]
+        self.update()
 
     def update(self):
         try: 
-            print('Updating user')
+            print('Updating count')
             num = str(contribs.get_contribs(self.username))
             self.icon = 'github0.png' if num == '0' else 'github.png'
             self.count.title = num + ' commits'
