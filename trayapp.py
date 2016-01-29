@@ -7,6 +7,9 @@ import contribs
 
 class GithubTrayApp(rumps.App):
 
+    red_icon = 'github0.png'
+    black_icon = 'github.png'
+
     def __init__(self):
         super(GithubTrayApp, self).__init__('Github')
         self.count = rumps.MenuItem('commits')
@@ -19,13 +22,21 @@ class GithubTrayApp(rumps.App):
         ]
         self.update()
 
-    def update(self):
+    def fetch(self):
         try: 
-            print('Updating count')
             num = str(contribs.get_contribs(self.username))
-            self.icon = 'github0.png' if num == '0' else 'github.png'
+            self.icon = self.red_icon if num == '0' else self.black_icon
             self.count.title = num + ' commits'
         except Exception as e: print(e)
+
+    def show_username_error(self):
+        self.count.title = 'No Username Set'
+        self.icon = self.red_icon
+
+    def update(self):
+        print('Updating count')
+        if self.username != None: self.fetch()
+        else: self.show_username_error()
 
     @rumps.timer(60*5)
     def timer(self, _):
