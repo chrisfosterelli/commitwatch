@@ -7,7 +7,8 @@ name = '~/.commitwatch'
 
 def get_username():
     path = expanduser(name)
-    config_file = open(path)
+    try: config_file = open(path)
+    except IOError: return None
     username = config_file.read()
     username = username[:-1]
     config_file.close()
