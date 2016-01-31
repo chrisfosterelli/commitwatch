@@ -35,6 +35,7 @@ class GithubTrayApp(rumps.App):
 
     def update(self):
         print('Updating count')
+        print(self.username)
         if self.username != None: self.fetch()
         else: self.show_username_error()
 
@@ -51,8 +52,14 @@ class GithubTrayApp(rumps.App):
         rumps.alert('jk! not ready yet!')
 
     @rumps.clicked('Change Username')    
-    def change_username(_):
-        rumps.alert('jk! not ready yet!')
+    def change_username(self, _):
+        window = rumps.Window(dimensions = (100, 23))
+        window.message = 'Enter your Github username'
+        window.icon = 'github.png'
+        window.title = 'Username'
+        self.username = window.run().text
+        config.set_username(self.username)
+        self.update()
 
 if __name__ == '__main__':
     GithubTrayApp().run()

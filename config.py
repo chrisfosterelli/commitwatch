@@ -13,3 +13,11 @@ def get_username():
     username = username[:-1]
     config_file.close()
     return username
+
+def set_username(username):
+    path = expanduser(name)
+    print(username)
+    try: config_file = open(path, 'w')
+    except IOError: return None
+    config_file.write(username + '\n')
+    config_file.close()
