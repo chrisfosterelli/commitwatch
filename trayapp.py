@@ -12,11 +12,12 @@ class GithubTrayApp(rumps.App):
 
     def __init__(self):
         super(GithubTrayApp, self).__init__('Github')
-        self.count = rumps.MenuItem('commits')
+        self.count = rumps.MenuItem('Contributions: N/A')
         self.username = config.get_username()
         self.menu = [ 
             self.count, 
             'Update Now', 
+            rumps.separator,
             'Change Frequency', 
             'Change Username' 
         ]
@@ -26,7 +27,7 @@ class GithubTrayApp(rumps.App):
         try: 
             num = str(contribs.get_contribs(self.username))
             self.icon = self.red_icon if num == '0' else self.black_icon
-            self.count.title = num + ' commits'
+            self.count.title = 'Contributions: ' + num
         except Exception as e: print(e)
 
     def show_username_error(self):
