@@ -28,6 +28,9 @@ class GithubTrayApp(rumps.App):
             num = str(contribs.get_contribs(self.username))
             self.icon = self.red_icon if num == '0' else self.black_icon
             self.count.title = 'Contributions: ' + num
+        except IOError as e:
+            self.icon = self.red_icon
+            self.count.title = 'No internet'
         except Exception as e: print(e)
 
     def show_username_error(self):
