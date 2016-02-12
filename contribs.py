@@ -30,6 +30,7 @@ class ContribParser(HTMLParser.HTMLParser):
 def get_contribs(username):
     url = 'https://github.com/users/:user/contributions'
     req = urllib.urlopen(url.replace(':user', username))
+    if req.getcode() == 404: raise ValueError('No such user')
     parser = ContribParser()
     parser.feed(req.read())
     return parser.count
