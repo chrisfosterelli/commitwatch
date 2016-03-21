@@ -31,9 +31,11 @@ class GithubTrayApp(rumps.App):
         except ValueError as e:
             self.icon = self.red_icon
             self.count.title = 'Invalid username'
+            print(e)
         except IOError as e:
             self.icon = self.red_icon
             self.count.title = 'No internet'
+            print(e)
         except Exception as e: print(e)
 
     def show_username_error(self):
