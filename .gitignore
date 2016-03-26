@@ -1,2 +1,5 @@
 env
 *.pyc
+.eggs
+build
+dist
