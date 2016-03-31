@@ -4,7 +4,7 @@ APP = [ 'trayapp.py' ]
 DATA_FILES = [ 'github0.png', 'github.png' ]
 OPTIONS = {
     'argv_emulation' : True,
-    'iconfile' : 'github.png',
+    'iconfile' : 'icon.icns',
     'packages' : [ 'rumps' ],
     'plist' : { 'LSUIElement' : True }
 }
