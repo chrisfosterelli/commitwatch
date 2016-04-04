@@ -1,5 +1,7 @@
 # Commitwatch
 
+![screenshot][2]
+
 Commitwatch is an OSX tray applet that displays your Github contributions today.
 With commitwatch you can avoid forgetting about your contribution streak, and 
 keep track of how active you've been each day!
@@ -35,3 +37,4 @@ start if ran from within a virtualenv, and not build if built outside of a
 virtualenv... Your mileage may vary!
 
 [1]:https://github.com/chrisfosterelli/commitwatch/releases
+[2]:./screenshot.png
